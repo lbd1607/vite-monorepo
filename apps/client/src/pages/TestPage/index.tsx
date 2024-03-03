@@ -1,7 +1,7 @@
-import React from "react";
 import { useLazyLoadQuery } from "react-relay";
 import graphql from "babel-plugin-relay/macro";
 import { TestPageQuery } from "./__generated__/TestPageQuery.graphql";
+import { Suspense } from "react";
 
 const TestPage = () => {
   const data = useLazyLoadQuery<TestPageQuery>(
@@ -17,7 +17,7 @@ const TestPage = () => {
     {}
   );
   return (
-    <div>
+    <Suspense>
       <h1>Test page</h1>
       <div
         style={{
@@ -34,7 +34,7 @@ const TestPage = () => {
           </p>
         ))}
       </div>
-    </div>
+    </Suspense>
   );
 };
 
