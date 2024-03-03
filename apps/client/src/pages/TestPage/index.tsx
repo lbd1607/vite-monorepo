@@ -1,7 +1,8 @@
 import { useLazyLoadQuery } from "react-relay";
 import graphql from "babel-plugin-relay/macro";
 import { TestPageQuery } from "./__generated__/TestPageQuery.graphql";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
+import CustomModal from "../../components/CustomModal";
 
 const TestPage = () => {
   const data = useLazyLoadQuery<TestPageQuery>(
@@ -16,6 +17,9 @@ const TestPage = () => {
     `,
     {}
   );
+
+  const [isOpen, setIsOpen] = useState(true);
+
   return (
     <Suspense>
       <h1>Test page</h1>
@@ -34,6 +38,7 @@ const TestPage = () => {
           </p>
         ))}
       </div>
+      <CustomModal isOpen={isOpen} setIsOpen={setIsOpen} />
     </Suspense>
   );
 };

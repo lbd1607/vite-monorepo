@@ -4,6 +4,7 @@ import TestPage from "./pages/TestPage";
 import Nav from "./Nav";
 import { RelayEnvironmentProvider } from "react-relay";
 import environment from "./RelayEnv";
+import Modal from "react-modal";
 
 const runtimeErrorOverlay = (err: any) => {
   // must be within function call because that's when the element is defined for sure.
@@ -40,6 +41,8 @@ const runtimeErrorOverlay = (err: any) => {
 if (import.meta.env.DEV) {
   window.addEventListener("error", ({ error }) => runtimeErrorOverlay(error));
 }
+
+Modal.setAppElement("#root");
 
 function App() {
   return (
