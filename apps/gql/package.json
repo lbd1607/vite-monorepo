@@ -1,0 +1,35 @@
+{
+  "name": "gql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "generate": "graphql-codegen && yarn watch",
+    "compile": "graphql-codegen && tsc",
+    "dev": "yarn run compile && node ./dist/index.js",
+    "watch": "concurrently  --names \"CodeGen,TS,Nodemon\" -c \"bgYellow,bgBlue,bgMagenta\" \"graphql-codegen --watch 'src/**/*.ts'\"  \"tsc -w \" \"nodemon ./dist/index.js \"",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.2.2",
+    "@graphql-tools/schema": "^9.0.12",
+    "@graphql-tools/utils": "^9.1.3",
+    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "2.16.1",
+    "@graphql-codegen/introspection": "2.2.3",
+    "@graphql-codegen/schema-ast": "^3.0.1",
+    "@graphql-codegen/typescript": "2.8.5",
+    "@graphql-codegen/typescript-resolvers": "2.7.10",
+    "@types/node": "^18.11.13",
+    "concurrently": "^7.6.0",
+    "typescript": "^4.9.4"
+  }
+}
