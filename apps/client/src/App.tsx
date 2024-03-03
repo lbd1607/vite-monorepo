@@ -5,7 +5,7 @@ import Nav from "./Nav";
 import { RelayEnvironmentProvider } from "react-relay";
 import environment from "./RelayEnv";
 
-const showErrorOverlay = (err: any) => {
+const runtimeErrorOverlay = (err: any) => {
   // must be within function call because that's when the element is defined for sure.
   const ErrorOverlay = customElements.get("vite-error-overlay");
 
@@ -14,7 +14,21 @@ const showErrorOverlay = (err: any) => {
     return;
   }
 
-  const formattedError = `Runtime error: ${err.message} in ${err.fileName} on column ${err.columnNumber}, line ${err.lineNumber}. \n\nStack trace: ${err.stack}`;
+  const errorMessage = err.message ? `Runtime error: ${err.message} ` : "";
+  const errorFilename = err.fileName ? `In ${err.fileName} ` : "";
+  const errorColumnNumber = err.columnNumber
+    ? `On column ${err.columnNumber} `
+    : "";
+  const errorLineNumber = err.lineNumber ? `On line ${err.lineNumber}. ` : "";
+  const errorStacktrace = err.stack ? `\n\nStack trace: ${err.stack}` : "";
+
+  const formattedError = (
+    errorMessage +
+    errorFilename +
+    errorColumnNumber +
+    errorLineNumber +
+    errorStacktrace
+  ).trim();
 
   console.error(formattedError);
 
@@ -24,7 +38,7 @@ const showErrorOverlay = (err: any) => {
 };
 
 if (import.meta.env.DEV) {
-  window.addEventListener("error", ({ error }) => showErrorOverlay(error));
+  window.addEventListener("error", ({ error }) => runtimeErrorOverlay(error));
 }
 
 function App() {
