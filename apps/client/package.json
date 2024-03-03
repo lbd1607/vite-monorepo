@@ -12,6 +12,7 @@
     "test": "react-scripts test"
   },
   "dependencies": {
+    "@repo/common": "*",
     "@repo/ui": "*",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -41,7 +42,8 @@
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
     "vite-plugin-checker": "^0.6.4",
-    "vite-plugin-relay": "^2.1.0"
+    "vite-plugin-relay": "^2.1.0",
+    "vite-tsconfig-paths": "^4.3.1"
   },
   "browserslist": {
     "production": [
