@@ -15,9 +15,11 @@ export default defineConfig({
       typescript: true,
     }),
   ],
-
   server: {
     port: 4200,
     open: true,
+  },
+  build: {
+    outDir: "build",
   },
 });
