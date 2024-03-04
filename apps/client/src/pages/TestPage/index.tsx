@@ -4,6 +4,7 @@ import { TestPageQuery } from "./__generated__/TestPageQuery.graphql";
 import { Suspense, useState } from "react";
 import CustomModal from "components/CustomModal";
 import { CommonCustomModal } from "@repo/common/components/CommonCustomModal";
+import { styled } from "styled-components";
 
 const TestPage = () => {
   const data = useLazyLoadQuery<TestPageQuery>(
@@ -23,22 +24,17 @@ const TestPage = () => {
 
   return (
     <Suspense>
-      <h1>Test page</h1>
-      <div
-        style={{
-          display: "grid",
-          justifyContent: "center",
-        }}
-      >
+      <PageHeading>Test page</PageHeading>
+      <DataDisplay>
         Data:
         {data?.messages?.map((message) => (
-          <p key={message.id}>
-            <p>ID: {message.id}</p>
-            <p>User: {message.user}</p>
-            <p>Content: {message.content}</p>
-          </p>
+          <MessageWrapper key={message.id}>
+            <Message>ID: {message.id}</Message>
+            <Message>User: {message.user}</Message>
+            <Message>Content: {message.content}</Message>
+          </MessageWrapper>
         ))}
-      </div>
+      </DataDisplay>
       {/* <CustomModal isOpen={isOpen} setIsOpen={setIsOpen} /> */}
       {/* <CommonCustomModal isOpen={isOpen} setIsOpen={setIsOpen} /> */}
     </Suspense>
@@ -46,3 +42,11 @@ const TestPage = () => {
 };
 
 export default TestPage;
+
+const PageHeading = styled.h1``;
+const DataDisplay = styled.div`
+  display: grid;
+  justify-content: center;
+`;
+const MessageWrapper = styled.div``;
+const Message = styled.p``;
