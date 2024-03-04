@@ -1,6 +1,6 @@
-import React from 'react'
 import ReactModal from 'react-modal'
 import PropTypes from 'prop-types'
+import { styled } from 'styled-components';
 
 export const CommonCustomModal = ({isOpen, setIsOpen}) => {
 
@@ -9,7 +9,7 @@ export const CommonCustomModal = ({isOpen, setIsOpen}) => {
 
   return (
     <ReactModal isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
-      I am a custom modal {" "}
+     <Message> I am a custom modal {" "}</Message>
       <button onClick={() => setIsOpen(false)}>Close</button>
     </ReactModal>
   )
@@ -20,3 +20,5 @@ export const CommonCustomModal = ({isOpen, setIsOpen}) => {
 //   isOpen: PropTypes.bool.isRequired,
 //   setIsOpen: PropTypes.func()
 // }
+
+const Message = styled.p``;

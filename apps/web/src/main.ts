@@ -1,4 +1,4 @@
-import { Header } from "@repo/common/components/header";
+import { Header } from "@repo/common/components/Header";
 import "./style.css";
 import typescriptLogo from "./typescript.svg";
 import { Counter } from "@repo/common/components/counter";

@@ -5,6 +5,7 @@ import { Suspense, useState } from "react";
 import CustomModal from "components/CustomModal";
 import { CommonCustomModal } from "@repo/common/components/CommonCustomModal";
 import { styled } from "styled-components";
+import { Header } from "@repo/common/components/Header";
 
 const TestPage = () => {
   const data = useLazyLoadQuery<TestPageQuery>(
@@ -24,7 +25,7 @@ const TestPage = () => {
 
   return (
     <Suspense>
-      <PageHeading>Test page</PageHeading>
+      <Header title="Test Page" />
       <DataDisplay>
         Data:
         {data?.messages?.map((message) => (
@@ -43,7 +44,6 @@ const TestPage = () => {
 
 export default TestPage;
 
-const PageHeading = styled.h1``;
 const DataDisplay = styled.div`
   display: grid;
   justify-content: center;
