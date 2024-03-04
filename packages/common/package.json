@@ -1,0 +1,19 @@
+{
+  "name": "@repo/common",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint \"**/*.ts\""
+  },
+  "dependencies": {
+    "prop-types": "^15.8.1",
+    "react-modal": "^3.16.1"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@types/react-modal": "^3.16.3"
+  }
+}

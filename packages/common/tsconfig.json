@@ -1,8 +1,9 @@
 {
-  "extends": "@repo/typescript-config/vite.json",
-  "include": ["src"],
+  "extends": "@repo/typescript-config/base.json",
+  "include": ["."],
+  "exclude": ["node_modules"],
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -11,12 +12,11 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "ESNext",
+    "module": "CommonJS",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "baseUrl": "./src"
+    "jsx": "react-jsx"
   }
 }
