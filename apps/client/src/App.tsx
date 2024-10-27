@@ -5,6 +5,7 @@ import Nav from "./Nav";
 import { RelayEnvironmentProvider } from "react-relay";
 import environment from "./RelayEnv";
 import Modal from "react-modal";
+import { Suspense } from "react";
 
 const runtimeErrorOverlay = (err: any) => {
   // must be within function call because that's when the element is defined for sure.
@@ -46,16 +47,18 @@ Modal.setAppElement("#root");
 
 function App() {
   return (
-    <RelayEnvironmentProvider environment={environment}>
-      <div className="App">
-        <header>
-          <Nav />
-        </header>
-        <Routes>
-          <Route path="/TestPage" element={<TestPage />} />
-        </Routes>
-      </div>
-    </RelayEnvironmentProvider>
+    <Suspense fallback={null}>
+      <RelayEnvironmentProvider environment={environment}>
+        <div className="App">
+          <header>
+            <Nav />
+          </header>
+          <Routes>
+            <Route path="/TestPage" element={<TestPage />} />
+          </Routes>
+        </div>
+      </RelayEnvironmentProvider>
+    </Suspense>
   );
 }
 
